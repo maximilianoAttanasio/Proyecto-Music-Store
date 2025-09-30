@@ -1,0 +1,20 @@
+/* ---- Reset general ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---- Estilos globales ---- */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  min-height: 100vh;
+}
+
+.app-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
