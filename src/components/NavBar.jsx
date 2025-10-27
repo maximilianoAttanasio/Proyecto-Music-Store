@@ -1,14 +1,13 @@
 import CartWidget from "./CartWidget";
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
     <nav className="Navbar">
       <p className="logo">Los Tecnonautas</p>
-      <ul className="Nav-links">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Productos</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
+      <NavLink to="/">Inicio</NavLink>
+      <NavLink to="/instrumentos">Instrumentos</NavLink>
+      <NavLink to="/contacto">Contacto</NavLink>
       <CartWidget />
     </nav>
   );

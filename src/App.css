@@ -1,3 +1,12 @@
+/* === Layout General === */
+.app-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
 /* === CSS Header === */
 .Navbar {
   display: flex;
@@ -13,21 +22,22 @@
   font-weight: bold;
 }
 
-.Nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.Nav-links li a {
+/* === CSS NavLink === */
+.Navbar a {
   text-decoration: none;
   color: #fff;
   font-weight: 500;
+  margin: 0 1rem;
   transition: color 0.3s;
 }
 
-.Nav-links li a:hover {
+.Navbar a:hover {
   color: #ffcc00;
+}
+
+.Navbar a.active {
+  color: #ffcc00;
+  border-bottom: 2px solid #ffcc00;
 }
 
 /* === CSS Cart Widget === */
@@ -60,11 +70,215 @@ main p {
   font-size: 1.2rem;
 }
 
+/* === CSS Lista de Instrumentos === */
+.instrumentos-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.instrumento-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.instrumento-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.instrumento-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.instrumento-card h3 {
+  margin: 0.5rem 0;
+  color: #1e1e2f;
+}
+
+.instrumento-card p {
+  margin: 0.3rem 0;
+}
+
+.instrumento-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background-color: #1e1e2f;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.instrumento-card a:hover {
+  background-color: #535bf2;
+}
+
+/* === CSS Detalle del Instrumento === */
+.instrumento-detail {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.instrumento-detail img {
+  width: 45%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.instrumento-info {
+  width: 50%;
+  text-align: left;
+  color: #1e1e2f;
+}
+
+.instrumento-info h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.instrumento-info p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+/* CSS Botón Carrito */
+.instrumento-info button {
+  margin-top: 1.5rem;
+  background-color: #1e1e2f;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.instrumento-info button:hover {
+  background-color: #535bf2;
+}
+
+/* === CSS Contador === */
+.item-count {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.count-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.count-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e1e2f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  line-height: 1;
+}
+
+.count-controls button:hover {
+  background-color: #535bf2;
+}
+
+.count-controls span {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #1e1e2f;
+  min-width: 20px;
+  text-align: center;
+}
+
+.add-button {
+  background-color: #ffcc00;
+  color: #1e1e2f;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-button:hover {
+  background-color: #f5b700;
+}
+
+.mensaje-carrito {
+  margin-top: 0.8rem;
+  color: green;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: opacity 0.3s ease;
+}
+
 /* === CSS Footer === */
 footer {
   background-color: #1e1e2f;
   color: #fff;
   text-align: center;
   padding: 1rem;
-  margin-top: 2rem;
+}
+
+/* === CSS NotFound === */
+.notfound-container {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.notfound-title {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  color: #1e1e2f;
+}
+
+.notfound-text {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.notfound-link {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  background-color: #1e1e2f;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.notfound-link:hover {
+  background-color: #535bf2;
 }
