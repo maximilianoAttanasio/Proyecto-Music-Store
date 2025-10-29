@@ -10,7 +10,7 @@ function ItemList({ instrumentos }) {
           <h3>{instrumento.nombre}</h3>
           <p>{instrumento.categoria}</p>
           <p>${instrumento.precio}</p>
-          <Link to={`/instrumento/${instrumento.id}`}>Ver detalle</Link>
+          <Link to={`/instrumento/${instrumento.id}`} className="btn btn-primary">Ver detalle</Link>
         </div>
       ))}
     </div>

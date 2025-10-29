@@ -4,7 +4,6 @@ import ItemListContainer from "../ItemListContainer";
 function InstrumentosPage() {
   return (
     <>
-      <h2>Lista de Instrumentos</h2>
       <ItemListContainer />
     </>
   );

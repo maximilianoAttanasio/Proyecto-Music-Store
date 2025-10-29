@@ -1,10 +1,47 @@
-# Proyecto Music Store
+# Proyecto Music Store - Los Tecnonautas
 
-Este es un e-commerce de instrumentos musicales desarrollado en **React**.  
-En esta primera entrega se construyeron los componentes base para la landing page:
+Aplicación e-commerce de instrumentos musicales desarrollada en React, donde los usuarios pueden navegar por categorías, ver detalles de productos y simular una experiencia de compra.
 
-- **NavBar** con logo, enlaces de navegación y carrito de compras (CartWidget).  
-- **ItemListContainer** que recibe un mensaje de bienvenida mediante **props**.  
-- **Estructura inicial** con Header, Main y Footer para organizar la página.
+## Estado del Proyecto
 
-Este proyecto irá evolucionando con las siguientes entregas.
+**Segunda Entrega: Navegación por rutas**  
+Se implementó **React Router** y carga dinámica de datos mediante **fetch**.
+
+## Componentes Principales
+
+### Componentes Contenedores
+Manejan estado, efectos y lógica de obtención de datos:
+- **ItemListContainer.jsx** → Obtiene la lista de instrumentos desde un archivo JSON y permite filtrar por categoría.  
+- **ItemDetailContainer.jsx** → Obtiene los datos de un instrumento específico según el parámetro `id` de la URL.
+
+### Componentes de Presentación
+Encargados de la parte visual:
+- **ItemList.jsx** → Renderiza la grilla de instrumentos.  
+- **ItemDetail.jsx** → Muestra la información detallada de un instrumento y permite seleccionar cantidad para agregar al carrito.  
+- **NavBar.jsx**, **CartWidget.jsx**, **Footer.jsx**, **NotFound.jsx**, entre otros.
+
+## Navegación y Rutas
+
+Implementada con **React Router**:
+
+- `/` → Catálogo general  
+- `/instrumentos` → Lista completa de instrumentos  
+- `/instrumento/:id` → Detalle de un instrumento específico  
+- `*` → Página **404 Not Found**
+
+Además, se incluye un filtro por categorías:
+- Cuerdas  
+- Percusión  
+- Teclados  
+- Amplificadores  
+- Audio  
+- Viento  
+
+## Funcionalidades Implementadas
+
+- Navegación entre vistas con **React Router**
+- Uso de **fetch** simulando una API local (`/data/instrumentos.json`)
+- Filtrado dinámico por categorías
+- Vista en detalle con contador de unidades
+- Mensaje de confirmación al agregar al carrito
+- Página de error 404 personalizada

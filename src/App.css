@@ -1,4 +1,10 @@
 /* === Layout General === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .app-container {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -111,16 +117,38 @@ main p {
 .instrumento-card a {
   display: inline-block;
   margin-top: 0.5rem;
-  background-color: #1e1e2f;
-  color: #fff;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
 }
 
-.instrumento-card a:hover {
+/* === CSS Botones === */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  text-align: center;
+  margin: 0;
+}
+
+.btn-primary {
+  background-color: #1e1e2f;
+  color: #fff;
+}
+
+.btn-primary:hover {
   background-color: #535bf2;
+}
+
+.btn-secondary {
+  background-color: #ffcc00;
+  color: #1e1e2f;
+  font-weight: bold;
+}
+
+.btn-secondary:hover {
+  background-color: #f5b700;
 }
 
 /* === CSS Detalle del Instrumento === */
@@ -158,22 +186,6 @@ main p {
 .instrumento-info p {
   margin: 0.5rem 0;
   font-size: 1.1rem;
-}
-
-/* CSS Botón Carrito */
-.instrumento-info button {
-  margin-top: 1.5rem;
-  background-color: #1e1e2f;
-  color: #fff;
-  border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.instrumento-info button:hover {
-  background-color: #535bf2;
 }
 
 /* === CSS Contador === */
@@ -218,21 +230,6 @@ main p {
   color: #1e1e2f;
   min-width: 20px;
   text-align: center;
-}
-
-.add-button {
-  background-color: #ffcc00;
-  color: #1e1e2f;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.add-button:hover {
-  background-color: #f5b700;
 }
 
 .mensaje-carrito {
@@ -281,4 +278,33 @@ footer {
 
 .notfound-link:hover {
   background-color: #535bf2;
+}
+
+/* === CSS Selector Categorías === */
+.filtro-categorias {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.categoria-boton {
+  background-color: #1e1e2f;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.categoria-boton:hover {
+  background-color: #535bf2;
+}
+
+.categoria-boton.activo {
+  background-color: #ffcc00;
+  color: #1e1e2f;
 }
