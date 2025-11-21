@@ -1,64 +1,52 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
-import { fetchInstrumentosAsync } from "../utils/FuncionesApi";
+import { db } from "../utils/FirebaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 function ItemListContainer() {
   const [instrumentos, setInstrumentos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todos");
+
+  const { categoria } = useParams();
 
   useEffect(() => {
-    const obtenerInstrumento = async () => {
+    const obtenerInstrumentos = async () => {
+      setLoading(true);
+
       try {
-        const data = await fetchInstrumentosAsync();
+        const instrumentosRef = collection(db, "instrumentos");
+
+        const consulta = categoria
+          ? query(instrumentosRef, where("categoria", "==", categoria))
+          : instrumentosRef;
+
+        const snapshot = await getDocs(consulta);
+
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
         setInstrumentos(data);
       } catch (error) {
-        console.error("Error al obtener lista de instrumentos", error);
+        console.error("Error al obtener instrumentos:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    obtenerInstrumento();
-  }, []);
+    obtenerInstrumentos();
+  }, [categoria]);
 
   if (loading) return <p>Cargando instrumentos...</p>;
 
-  const instrumentosFiltrados =
-    categoriaSeleccionada === "Todos"
-      ? instrumentos
-      : instrumentos.filter((item) => item.categoria === categoriaSeleccionada);
-
-  const categorias = [
-    "Todos",
-    "Cuerdas",
-    "Percusión",
-    "Teclados",
-    "Amplificadores",
-    "Audio",
-    "Viento",
-  ];
-
   return (
     <div className="item-list-container">
-      <h2>Catálogo de Instrumentos</h2>
+      <h2>{categoria ? `Categoría: ${categoria}` : "Catálogo de Instrumentos"}</h2>
 
-      <div className="filtro-categorias">
-        {categorias.map((cat) => (
-          <button
-            key={cat}
-            className={`categoria-boton ${
-              categoriaSeleccionada === cat ? "activo" : ""
-            }`}
-            onClick={() => setCategoriaSeleccionada(cat)}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      <ItemList instrumentos={instrumentosFiltrados} />
+      <ItemList instrumentos={instrumentos} />
     </div>
   );
 }

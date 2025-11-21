@@ -2,7 +2,8 @@ import NavBar from "./NavBar";
 
 function Header() {
   return (
-    <header>
+    <header className="header">
+      <h1 className="header-title">Los Tecnonautas</h1>
       <NavBar />
     </header>
   );
